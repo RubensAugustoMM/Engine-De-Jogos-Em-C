@@ -48,40 +48,40 @@ STATIC_ASSERT(sizeof(b32) == 4, "tipo b32 deve possuir apenas 4 bytes");
 
 // deteccao de plataforma
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) 
-#define KPLATFORM_WINDOWS 1
+#define PLATAFORMA_WINDOWS 1
 #ifndef _WIN64
-#error "64-bit is required on Windows!"
+#error "64-bit e necessário no windows!"
 #endif
 #elif defined(__linux__) || defined(__gnu_linux__)
 // Linux OS
-#define KPLATFORM_LINUX 1
+#define PLATAFORMA_LINUX 1
 #if defined(__ANDROID__)
-#define KPLATFORM_ANDROID 1
+#define PLATAFORMA_ANDROID 1
 #endif
 #elif defined(__unix__)
 // pega qualquer plataforma nao definida acima.
-#define KPLATFORM_UNIX 1
+#define PLATAFORMA_UNIX 1
 #elif defined(_POSIX_VERSION)
 // Posix
-#define KPLATFORM_POSIX 1
+#define PLATAFORMA_POSIX 1
 #elif __APPLE__
 // plataformas Apple 
-#define KPLATFORM_APPLE 1
+#define PLATAFORMA_APPLE 1
 #include <TargetConditionals.h>
 #if TARGET_IPHONE_SIMULATOR
 // simulador iOS 
-#define KPLATFORM_IOS 1
-#define KPLATFORM_IOS_SIMULATOR 1
+#define PLATAFORMA_IOS 1
+#define PLATAFORMA_IOS_SIMULATOR 1
 #elif TARGET_OS_IPHONE
-#define KPLATFORM_IOS 1
+#define PLATAFORMA_IOS 1
 // dispositivos iOS 
 #elif TARGET_OS_MAC
 // outros tipos de mac
 #else
-#error "Unknown Apple platform"
+#error "plataforma apple desconhecida!"
 #endif
 #else
-#error "Unknown platform!"
+#error "plataforma desconhecida!!"
 #endif
 #ifdef KEXPORT
 // Exports
